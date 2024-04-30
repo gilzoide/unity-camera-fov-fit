@@ -18,7 +18,7 @@ namespace Gilzoide.CameraFit
         [Tooltip("Margins to add to the bounds when fitting the FOV, in world units.")]
         [SerializeField] protected Vector2 _margins;
 
-        public abstract Bounds? GetWorldBounds();
+        protected abstract Bounds? GetWorldBounds();
 
         protected void Start()
         {
@@ -42,18 +42,29 @@ namespace Gilzoide.CameraFit
 
         public void RefreshFov()
         {
-            if (_targetCamera && GetWorldBounds() is Bounds bounds)
+            if (_targetCamera && GetTargetBounds() is Bounds bounds)
             {
-
-                bounds.Expand(_margins);
                 _targetCamera.FitFov(bounds);
+            }
+        }
+
+        public Bounds? GetTargetBounds()
+        {
+            if (GetWorldBounds() is Bounds bounds)
+            {
+                bounds.Expand(_margins);
+                return bounds;
+            }
+            else
+            {
+                return null;
             }
         }
 
 #if UNITY_EDITOR
         protected virtual void OnDrawGizmosSelected()
         {
-            if (GetWorldBounds() is Bounds bounds)
+            if (GetTargetBounds() is Bounds bounds)
             {
                 Gizmos.color = Color.yellow;
                 Gizmos.DrawWireCube(bounds.center, bounds.size);

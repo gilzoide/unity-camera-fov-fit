@@ -8,7 +8,7 @@ namespace Gilzoide.CameraFit
         [Tooltip("Bounds used to fit the target Camera's FOV.")]
         [SerializeField] protected Bounds _bounds;
 
-        public override Bounds? GetWorldBounds()
+        protected override Bounds? GetWorldBounds()
         {
             if (math.any(_bounds.size))
             {
