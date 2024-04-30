@@ -1,4 +1,6 @@
 # Camera FOV Fit
+[![openupm](https://img.shields.io/npm/v/com.gilzoide.camera-fov-fit?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.gilzoide.camera-fov-fit/)
+
 Automatically adjust cameras' Field Of View (FOV) to 3D objects's bounds in Unity.
 
 
@@ -15,6 +17,10 @@ Automatically adjust cameras' Field Of View (FOV) to 3D objects's bounds in Unit
 
 ## How to install
 Either:
+- Use the [openupm registry](https://openupm.com/) and install this package using the [openupm-cli](https://github.com/openupm/openupm-cli):
+  ```
+  openupm add com.gilzoide.camera-fov-fit
+  ```
 - Install using the [Unity Package Manager](https://docs.unity3d.com/Manual/upm-ui-giturl.html) with the following URL:
   ```
   https://github.com/gilzoide/unity-camera-fov-fit.git#1.0.0-preview1
