@@ -2,7 +2,7 @@ using System;
 using Unity.Mathematics;
 using UnityEngine;
 
-namespace Gilzoide.CameraFit
+namespace Gilzoide.CameraFit.Internal
 {
     public static class FovFitMath
     {

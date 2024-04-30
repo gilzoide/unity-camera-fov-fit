@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
-namespace Gilzoide.CameraFit
+namespace Gilzoide.CameraFit.Internal
 {
     public static class BoundsExtensions
     {

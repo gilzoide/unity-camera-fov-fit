@@ -1,3 +1,4 @@
+using Gilzoide.CameraFit.Internal;
 using UnityEngine;
 
 namespace Gilzoide.CameraFit
