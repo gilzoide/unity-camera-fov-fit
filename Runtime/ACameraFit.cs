@@ -1,4 +1,3 @@
-using Unity.Mathematics;
 using UnityEngine;
 
 namespace Gilzoide.CameraFit
@@ -7,12 +6,29 @@ namespace Gilzoide.CameraFit
     public abstract class ACameraFit : MonoBehaviour
     {
         [SerializeField] protected Camera _targetCamera;
+        [SerializeField] protected bool _applyOnStart = true;
+        [SerializeField] protected bool _applyOnUpdate = false;
         [SerializeField] protected Vector2 _margins;
 
         public abstract Bounds? GetWorldBounds();
 
-        private void Update()
+        protected void Start()
         {
+            if (_applyOnStart)
+            {
+                RefreshFov();
+            }
+        }
+
+        protected void Update()
+        {
+            if (!_applyOnUpdate && Application.isPlaying)
+            {
+                // disable refresh on Play mode to avoid no-op Updates
+                enabled = false;
+                return;
+            }
+
             RefreshFov();
         }
 

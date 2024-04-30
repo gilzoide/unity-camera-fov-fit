@@ -1,3 +1,4 @@
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace Gilzoide.CameraFit
@@ -8,7 +9,8 @@ namespace Gilzoide.CameraFit
 
         public override Bounds? GetWorldBounds()
         {
-            return new Bounds(transform.TransformPoint(_bounds.center), transform.TransformVector(_bounds.size));
+            Transform t = transform;
+            return new Bounds(t.TransformPoint(_bounds.center), (float3) t.lossyScale * _bounds.size);
         }
     }
 }
