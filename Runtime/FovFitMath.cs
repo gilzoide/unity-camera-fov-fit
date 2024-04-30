@@ -1,12 +1,13 @@
 using System;
+using Gilzoide.CameraFit.Internal;
 using Unity.Mathematics;
 using UnityEngine;
 
-namespace Gilzoide.CameraFit.Internal
+namespace Gilzoide.CameraFit
 {
     public static class FovFitMath
     {
-        public static void FitFov(this Camera camera, Bounds bounds)
+        public static void FitFovToBounds(this Camera camera, Bounds bounds)
         {
             if (camera == null)
             {
@@ -21,20 +22,23 @@ namespace Gilzoide.CameraFit.Internal
             }
 
             float finalFovScaleFactor = math.max(maxFitFovScaleFactor.x, maxFitFovScaleFactor.y);
-            if (camera.orthographic)
+            if (finalFovScaleFactor > 0)
             {
-                camera.orthographicSize *= finalFovScaleFactor;
-            }
-            else
-            {
-                camera.fieldOfView *= finalFovScaleFactor;
+                if (camera.orthographic)
+                {
+                    camera.orthographicSize *= finalFovScaleFactor;
+                }
+                else
+                {
+                    camera.fieldOfView *= finalFovScaleFactor;
+                }
             }
         }
 
         private static float2 FitFovScaleFactorForPoint(this Camera camera, Vector3 worldPoint)
         {
             float2 viewportPoint = (Vector2) camera.WorldToViewportPoint(worldPoint);
-            return math.abs(viewportPoint - new float2(0.5f)) * 2;
+            return math.abs(viewportPoint - 0.5f) * 2;
         }
     }
 }

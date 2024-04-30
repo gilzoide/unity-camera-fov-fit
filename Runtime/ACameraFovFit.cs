@@ -1,4 +1,3 @@
-using Gilzoide.CameraFit.Internal;
 using UnityEngine;
 
 namespace Gilzoide.CameraFit
@@ -44,7 +43,7 @@ namespace Gilzoide.CameraFit
         {
             if (_targetCamera && GetTargetBounds() is Bounds bounds)
             {
-                _targetCamera.FitFov(bounds);
+                _targetCamera.FitFovToBounds(bounds);
             }
         }
 

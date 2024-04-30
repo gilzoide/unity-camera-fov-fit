@@ -10,6 +10,7 @@ Automatically adjust cameras' Field Of View (FOV) to 3D objects's bounds in Unit
 - [CameraFovFitCollider](Runtime/CameraFovFitCollider.cs): fits the target camera's FOV to the specified collider's bounds.
 - [CameraFovFitRenderer](Runtime/CameraFovFitRenderer.cs): fits the target camera's FOV to the specified renderer's bounds.
 - Configuration for adjusting the FOV automatically in Start, every frame in Update, or none: just call `RefreshFov` manually whenever necessary.
+- [Camera.FitFovToBounds](Runtime/FovFitMath.cs) extension method for fitting a camera's FOV to the specified bounds without using the provided components.
 
 
 ## How to install
