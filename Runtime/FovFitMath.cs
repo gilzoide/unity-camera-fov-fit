@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Gilzoide.CameraFit
 {
-    public static class FitFovMath
+    public static class FovFitMath
     {
         public static void FitFov(this Camera camera, Bounds bounds)
         {

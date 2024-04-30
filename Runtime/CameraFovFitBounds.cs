@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Gilzoide.CameraFit
 {
-    public class CameraFitBounds : ACameraFit
+    public class CameraFovFitBounds : ACameraFovFit
     {
         [SerializeField] protected Bounds _bounds;
 

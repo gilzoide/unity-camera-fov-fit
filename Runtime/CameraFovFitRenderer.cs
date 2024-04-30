@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Gilzoide.CameraFit
 {
-    public class CameraFitRenderer : ACameraFit
+    public class CameraFovFitRenderer : ACameraFovFit
     {
         [SerializeField] protected Renderer _renderer;
 

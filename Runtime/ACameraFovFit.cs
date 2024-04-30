@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Gilzoide.CameraFit
 {
     [ExecuteAlways]
-    public abstract class ACameraFit : MonoBehaviour
+    public abstract class ACameraFovFit : MonoBehaviour
     {
         [SerializeField] protected Camera _targetCamera;
         [SerializeField] protected bool _applyOnStart = true;
