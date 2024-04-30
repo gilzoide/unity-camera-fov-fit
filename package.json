@@ -1,0 +1,15 @@
+{
+  "name": "com.gilzoide.camera-fov-fit",
+  "displayName": "Camera FOV Fit",
+  "version": "1.0.0-preview1",
+  "description": "Automatically fit Camera to 3D objects",
+  "homepage": "https://github.com/gilzoide/unity-camera-fov-fit",
+  "license": "Unlicense",
+  "author": {
+    "name": "Gil Barbosa Reis"
+  },
+  "dependencies": {
+    "com.unity.mathematics": "1.0.0"
+  },
+  "unity": "2018.1"
+}
