@@ -13,22 +13,25 @@ namespace Gilzoide.CameraFit.Internal
                 throw new ArgumentNullException(nameof(camera));
             }
 
-            float2 scale = default;
+            float2 maxFitFovScaleFactor = float2.zero;
             foreach (Vector3 corner in bounds.EnumerateCorners())
             {
-                scale = math.max(scale, camera.GetScaleFactor(corner));
+                float2 fitFovScaleFactor = camera.FitFovScaleFactorForPoint(corner);
+                maxFitFovScaleFactor = math.max(maxFitFovScaleFactor, fitFovScaleFactor);
             }
+
+            float finalFovScaleFactor = math.max(maxFitFovScaleFactor.x, maxFitFovScaleFactor.y);
             if (camera.orthographic)
             {
-                camera.orthographicSize *= math.max(scale.x, scale.y);
+                camera.orthographicSize *= finalFovScaleFactor;
             }
             else
             {
-                camera.fieldOfView *= math.max(scale.x, scale.y);
+                camera.fieldOfView *= finalFovScaleFactor;
             }
         }
 
-        private static float2 GetScaleFactor(this Camera camera, Vector3 worldPoint)
+        private static float2 FitFovScaleFactorForPoint(this Camera camera, Vector3 worldPoint)
         {
             float2 viewportPoint = (Vector2) camera.WorldToViewportPoint(worldPoint);
             return math.abs(viewportPoint - new float2(0.5f)) * 2;
