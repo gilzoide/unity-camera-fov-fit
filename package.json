@@ -2,7 +2,7 @@
   "name": "com.gilzoide.camera-fov-fit",
   "displayName": "Camera FOV Fit",
   "version": "1.0.0-preview1",
-  "description": "Automatically fit Camera to 3D objects",
+  "description": "Automatically adjust Cameras' FOV to 3D objects bounds.",
   "homepage": "https://github.com/gilzoide/unity-camera-fov-fit",
   "license": "Unlicense",
   "author": {
