@@ -9,8 +9,15 @@ namespace Gilzoide.CameraFit
 
         public override Bounds? GetWorldBounds()
         {
-            Transform t = transform;
-            return new Bounds(t.TransformPoint(_bounds.center), (float3) t.lossyScale * _bounds.size);
+            if (math.any(_bounds.size))
+            {
+                Transform t = transform;
+                return new Bounds(t.TransformPoint(_bounds.center), (float3) t.lossyScale * _bounds.size);
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }
