@@ -37,8 +37,15 @@ namespace Gilzoide.CameraFit
 
         private static float2 FitFovScaleFactorForPoint(this Camera camera, Vector3 worldPoint)
         {
-            float2 viewportPoint = (Vector2) camera.WorldToViewportPoint(worldPoint);
-            return math.abs(viewportPoint - 0.5f) * 2;
+            float3 viewportPoint = camera.WorldToViewportPoint(worldPoint);
+            if (viewportPoint.z >= camera.nearClipPlane && viewportPoint.z <= camera.farClipPlane)
+            {
+                return math.abs(viewportPoint.xy - 0.5f) * 2;
+            }
+            else
+            {
+                return float2.zero;
+            }
         }
     }
 }
