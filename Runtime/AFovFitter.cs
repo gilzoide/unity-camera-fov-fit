@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Gilzoide.CameraFit
 {
     [ExecuteAlways]
-    public abstract class ACameraFovFit : MonoBehaviour
+    public abstract class AFovFitter : MonoBehaviour
     {
         [Tooltip("Target Camera that will have the FOV adjusted. If null, nothing will happen.")]
         [SerializeField] protected Camera _targetCamera;

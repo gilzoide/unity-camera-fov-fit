@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace Gilzoide.CameraFit
 {
-    [AddComponentMenu("Camera FOV Fit/Bounds Fitter")]
-    public class CameraFovFitBounds : ACameraFovFit
+    [AddComponentMenu("Camera FOV Fit/Bounds FOV Fitter")]
+    public class BoundsFovFitter : AFovFitter
     {
         [Tooltip("Bounds used to fit the target Camera's FOV.")]
         [SerializeField] protected Bounds _bounds;
