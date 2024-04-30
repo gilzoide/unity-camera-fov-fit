@@ -18,7 +18,14 @@ namespace Gilzoide.CameraFit.Internal
             {
                 scale = math.max(scale, camera.GetScaleFactor(corner));
             }
-            camera.fieldOfView *= math.max(scale.x, scale.y);
+            if (camera.orthographic)
+            {
+                camera.orthographicSize *= math.max(scale.x, scale.y);
+            }
+            else
+            {
+                camera.fieldOfView *= math.max(scale.x, scale.y);
+            }
         }
 
         private static float2 GetScaleFactor(this Camera camera, Vector3 worldPoint)
