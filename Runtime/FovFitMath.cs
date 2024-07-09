@@ -22,7 +22,7 @@ namespace Gilzoide.CameraFit
             }
 
             float finalFovScaleFactor = math.max(maxFitFovScaleFactor.x, maxFitFovScaleFactor.y);
-            if (finalFovScaleFactor > 0)
+            if (finalFovScaleFactor > 0 && !Mathf.Approximately(finalFovScaleFactor, 1))
             {
                 if (camera.orthographic)
                 {
