@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 namespace Gilzoide.CameraFit.Internal
@@ -42,33 +41,36 @@ namespace Gilzoide.CameraFit.Internal
     {
         public const int CornerCount = 8;
 
-        private Vector3 _corner0;
-        private Vector3 _corner1;
-        private Vector3 _corner2;
-        private Vector3 _corner3;
-        private Vector3 _corner4;
-        private Vector3 _corner5;
-        private Vector3 _corner6;
-        private Vector3 _corner7;
+        private Vector3 _min;
+        private Vector3 _max;
+
         private int _cornerIndex;
 
         public BoundsCornerEnumerator(Bounds bounds)
         {
-            Vector3 min = bounds.min;
-            Vector3 max = bounds.max;
-
-            _corner0 = new Vector3(min.x, min.y, min.z);
-            _corner1 = new Vector3(min.x, min.y, max.z);
-            _corner2 = new Vector3(min.x, max.y, min.z);
-            _corner3 = new Vector3(min.x, max.y, max.z);
-            _corner4 = new Vector3(max.x, min.y, min.z);
-            _corner5 = new Vector3(max.x, min.y, max.z);
-            _corner6 = new Vector3(max.x, max.y, min.z);
-            _corner7 = new Vector3(max.x, max.y, max.z);
+            _min = bounds.min;
+            _max = bounds.max;
             _cornerIndex = 0;
         }
 
-        public unsafe Vector3 Current => ((Vector3*) UnsafeUtility.AddressOf(ref _corner0))[_cornerIndex];
+        public Vector3 Current
+        {
+            get
+            {
+                switch (_cornerIndex)
+                {
+                    case 0: return new Vector3(_min.x, _min.y, _min.z);
+                    case 1: return new Vector3(_min.x, _min.y, _max.z);
+                    case 2: return new Vector3(_min.x, _max.y, _min.z);
+                    case 3: return new Vector3(_min.x, _max.y, _max.z);
+                    case 4: return new Vector3(_max.x, _min.y, _min.z);
+                    case 5: return new Vector3(_max.x, _min.y, _max.z);
+                    case 6: return new Vector3(_max.x, _max.y, _min.z);
+                    case 7: return new Vector3(_max.x, _max.y, _max.z);
+                    default: return Vector3.zero;
+                }
+            }
+        }
 
         object IEnumerator.Current => Current;
 
