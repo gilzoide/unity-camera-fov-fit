@@ -80,9 +80,8 @@ namespace Gilzoide.CameraFit.Internal
 
         public bool MoveNext()
         {
-            if (_cornerIndex < CornerCount)
+            if (++_cornerIndex < CornerCount)
             {
-                _cornerIndex++;
                 return true;
             }
             else
